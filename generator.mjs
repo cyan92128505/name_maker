@@ -64,6 +64,11 @@ async function processByID(id) {
 }
 
 async function main() {
+  await processByID("3");
+  await processByID("4");
+  await processByID("6");
+  await processByID("9");
+  await processByID("11");
   await processByID("14");
   await processByID("19");
 }
