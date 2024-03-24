@@ -9,7 +9,7 @@ async function loadRaw(dataId) {
 
 function replaceText(data) {
   var result = `${data}`;
-
+  result = result.replace(//gi, "");
   result = result.replace(/<(|\/)table>/gi, "");
   result = result.replace(/<(|\/)thead>/gi, "");
   result = result.replace(/<(|\/)tr>/gi, "");
@@ -64,13 +64,18 @@ async function processByID(id) {
 }
 
 async function main() {
-  await processByID("3");
-  await processByID("4");
-  await processByID("6");
-  await processByID("9");
-  await processByID("11");
-  await processByID("14");
-  await processByID("19");
+  const list = [...new Array(24 - 3 + 1).keys()].map((v) => {
+    let key = `${v + 3}`;
+
+    if (key.length == 1) {
+      return "0" + key;
+    }
+    return key;
+  });
+
+  for (const iterator of list) {
+    await processByID(iterator);
+  }
 }
 
 main();
